@@ -12,6 +12,9 @@ module.exports = function(grunt) {
             dest: {
                 files: {
                     'tmp/exceljs-bundle.js': ['dest/node_modules/exceljs/lib/exceljs.browser.js', 'tmp/bundle/**/*.js']
+                },
+                options: {
+                    transform: [['babelify', { presets: ['es2015'] }]]
                 }
             }
         },
