@@ -5,11 +5,12 @@
   "description": "A starter project for testing ExcelJS",
   "license": "MIT",
   "dependencies": {
-    "exceljs": "0.4.4",
-    "requirejs": "^2.3.4"
+    "exceljs": "0.4.4"
   },
   "devDependencies": {
+    "browserify": "^14.4.0",
     "grunt": "^1.0.1",
+    "grunt-browserify": "^5.0.0",
     "grunt-contrib-clean": "^1.1.0",
     "grunt-contrib-copy": "^1.0.0",
     "grunt-exec": "^3.0.0",

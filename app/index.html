@@ -5,17 +5,27 @@
   <meta name="description" content="">
 </head>
 <body>
+
+
   <div>
     <label>Test</label>
-    <button onclick="writeTestExcelFile()">Test this Stuff and Check your console log</button>
+    <button onclick="test()">Test this Stuff and Check your console log</button>
   </div>
 
-  <script src="node_modules/requirejs/require.js"></script>
-  <script src="node_modules/exceljs/dist/exceljs.min.js"></script>
-  <script src="node_modules/exceljs/lib/exceljs.browser.js"></script>
-  <script src="node_modules/exceljs/excel.js"></script>
+  <!--
+  <script src="node_modules/requirejs/require.js" type="text/javascript"></script>
+  <script src="node_modules/exceljs/dist/exceljs.min.js" type="text/javascript"></script>
+  <script src="node_modules/exceljs/lib/exceljs.browser.js" type="text/javascript"></script>
+  <script src="node_modules/exceljs/excel.js" type="text/javascript"></script>
 
-  <script src="src/vendor/FileSaver.min.js"></script>
-  <script src="src/js/app.js"></script>
+  <script src="src/js/app.js" type="text/javascript"></script>
+  -->
+  <script src="src/vendor/FileSaver.min.js" type="text/javascript"></script>
+  <script src="src/js/exceljs-bundle.js" type="text/javascript"></script>
+  <script type="text/javascript">
+    var test = function(){
+        writeTestExcelFile();
+    };
+  </script>
 </body>
 </html>

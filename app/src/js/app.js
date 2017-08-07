@@ -1,30 +1,20 @@
 'use strict';
 
-var Excel;
+global.ExcelJS = require('../../node_modules/exceljs/lib/exceljs.browser');
 
-define(['require', 'exceljs'], function (require) {
-    Excel = require('exceljs');
-});
-
-//var Excel = require('../../node_modules/exceljs/dist/es5/exceljs.browser');
-//var ExcelProper = require('exceljs');
-
-//import * as Excel from "../../node_modules/exceljs/dist/exceljs.min.js";
-//import * as ExcelProper from "exceljs";
-
-var isRowBold = function(excelRow){
+global.isRowBold = function(excelRow){
     return excelRow.getCell('name').value === "Jeff";
 };
 
-var getRowColor = function(excelRow){
+global.getRowColor = function(excelRow){
     return { argb: excelRow.getCell('colorCode').value };
 };
 
-var getCellColor = function(excelRow, cell){
+global.getCellColor = function(excelRow, cell){
     return (excelRow.getCell('name').value === 'John' && cell.value === 0)? { argb: 'FFFFFF00' } : getRowColor(excelRow);
 };
 
-var getFont = function(isBold, color){
+global.getFont = function(isBold, color){
     return {
         name: 'Arial Black',
         color: color,
@@ -34,7 +24,7 @@ var getFont = function(isBold, color){
     };
 };
 
-var getTestHeader = function(){
+global.getTestHeader = function(){
     return [
         {key: "id", header: "Id"},
         {key: "name", header: "Name", width: 32},
@@ -43,7 +33,7 @@ var getTestHeader = function(){
     ];
 };
 
-var getTestData = function(){
+global.getTestData = function(){
     return [
         {
             id: 0,
@@ -66,8 +56,8 @@ var getTestData = function(){
     ];
 };
 
-var generateTestFile = function(){
-    var workbook = new Excel.Workbook();
+global.generateTestFile = function(){
+    var workbook = new ExcelJS.Workbook();
 
     // Set Workbook Metadata
     workbook.creator = "Generated";
@@ -102,29 +92,28 @@ var generateTestFile = function(){
     return workbook;
 };
 
-var writeTestFile = function (){
+global.writeTestFile = function (){
     var path = "test.txt";
     var data = "Test Content\n";
 
     var blob = new Blob([data], { type : 'text/plain' });
 
-    /*
-     fs.writeFile(path, data, "binary", function(e){
+    fs.writeFile(path, data, "binary", function(e){
      if(e){
-     console.log('Error has occurred');
-     console.log(e);
+        console.log('Error has occurred');
+        console.log(e);
      }
      else{
-     console.log('Success!');
+        console.log('Success!');
      }
-     });
-     */
+    });
+
     console.log('Writing Test File');
     saveAs(blob, path);
     console.log('Test File Written');
 };
 
-var writeTestExcelFile = function(){
+global.writeTestExcelFile = function(){
     var path = "testExcel.xlsx";
     var mimeType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
     var workbook = generateTestFile();
